@@ -60,10 +60,10 @@ public class Equipment_Location {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Equipment_Location that = (Equipment_Location) o;
-        return id.equals(that.id) &&
-                description.equals(that.description) &&
-                location.equals(that.location);
+        Equipment_Location location1 = (Equipment_Location) o;
+        return Objects.equals(id, location1.id) &&
+                description.equals(location1.description) &&
+                location.equals(location1.location);
     }
 
     @Override
