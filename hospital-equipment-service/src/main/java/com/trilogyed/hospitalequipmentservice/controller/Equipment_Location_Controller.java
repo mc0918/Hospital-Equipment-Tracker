@@ -27,6 +27,12 @@ public class Equipment_Location_Controller {
         return repository.findAll();
     }
 
+    @GetMapping("/equipment/description/{description}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Equipment_Location> getLocationsByDescription(@PathVariable String description) {
+        return repository.getByDescription(description);
+    }
+
     @GetMapping("/equipment/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Equipment_Location getLocationById(@PathVariable int id) {

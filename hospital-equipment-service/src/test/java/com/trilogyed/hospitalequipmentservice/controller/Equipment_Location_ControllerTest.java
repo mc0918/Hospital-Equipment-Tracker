@@ -93,6 +93,26 @@ public class Equipment_Location_ControllerTest {
     }
 
     @Test
+    public void getLocationsByDescription() throws Exception {
+        Equipment_Location locationOutput = new Equipment_Location(
+                1,
+                "Description",
+                "Location"
+        );
+        List<Equipment_Location> listWeExpect = new ArrayList<>(Arrays.asList(locationOutput));
+        String Json = mapper.writeValueAsString(listWeExpect);
+
+        given(repository.getByDescription("Description")).willReturn(listWeExpect);
+
+        mockMvc.perform(
+                get("/equipment/description/{description}", "Description")
+        )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(Json));
+    }
+
+    @Test
     public void getLocationById() throws Exception {
         Equipment_Location locationOutput = new Equipment_Location(
                 1,
